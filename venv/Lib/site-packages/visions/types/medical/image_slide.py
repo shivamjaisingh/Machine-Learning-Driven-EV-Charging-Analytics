@@ -1,0 +1,38 @@
+from pathlib import Path
+from typing import Sequence
+
+import pandas as pd
+
+from visions.relations import IdentityRelation, TypeRelation
+from visions.types.type import VisionsBaseType
+
+
+def _get_relations(cls) -> Sequence[TypeRelation]:
+    from visions.types import File
+
+    relations = [IdentityRelation(cls, File)]
+    return relations
+
+
+class ImageSlide(VisionsBaseType):
+    """**ImageSlide** implementation of :class:`visions.types.type.VisionsBaseType`.
+    (i.e. series with all OpenSlide files)
+
+    Examples:
+        >>> x = pd.Series([Path('/home/user/file.png'), Path('/home/user/test2.jpg')])
+        >>> x in visions.ImageSlide
+        True
+    """
+
+    @classmethod
+    def get_relations(cls) -> Sequence[TypeRelation]:
+        return _get_relations(cls)
+
+    @classmethod
+    def contains_op(cls, series: pd.Series) -> bool:
+        from openslide import open_slide
+
+        try:
+            return all(open_slide(p) for p in series)
+        except:
+            return False
