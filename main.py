@@ -16,13 +16,13 @@ print('Total Unique Start Cards out of ', (df_open_transactions['StartCard'].cou
       (df_open_transactions['StartCard'].nunique()))
 print((df_open_transactions.groupby(['Day/Night'])['TotalEnergy'].sum()))
 print((df_open_transactions.groupby(['Day/Night'])['MaxPower'].sum()))
-
+# first graph
 print(df_open_transactions.groupby(['Start Integer Hour'])['TransactionId'].count())
 df = pd.DataFrame(df_open_transactions.groupby(['Start Integer Hour'])['TransactionId'].count())
 dd = df.plot()
 dd.set_xticks(range(len(df)))
 plt.show()
-
+# first graph
 
 chargeTime = df_open_transactions['ChargeTime'] > 0
 day = df_open_transactions['Day/Night'] == "Day"
@@ -46,3 +46,25 @@ plt.show()
 
 sns.countplot(df_open_transactions['Day of the Week'])
 plt.show()
+
+x1 = df_open_transactions['TransactionId']
+y1 = df_open_transactions['ConnectedTime']
+plt.scatter(x1, y1, s=2,  label="Connected Time")
+
+x2 = df_open_transactions['TransactionId']
+y2 = df_open_transactions['ChargeTime']
+
+plt.scatter(x2, y2, s=2, label="Charge Time")
+
+plt.xlabel("Transaction IDs")
+plt.title("Connected Time vs Charge Time")
+plt.legend()
+plt.xticks(x2, "")
+plt.tick_params(
+    axis='x',          # changes apply to the x-axis
+    which='both',      # both major and minor ticks are affected
+    bottom=False,      # ticks along the bottom edge are off
+    top=False,         # ticks along the top edge are off
+    labelbottom=True)
+plt.show()
+
