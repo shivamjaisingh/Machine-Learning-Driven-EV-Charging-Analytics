@@ -93,6 +93,7 @@ print(df_meter_values.columns.values)
 
 date_year = pd.to_datetime(df_open_transactions['UTCTransactionStart'])
 
+
 def determine_peak(dto):
     if dto.strftime("%B") in ["November", "December", "January", "February", "March", "April"]:
         if (dto.strftime("%A") == "Saturday") or (dto.strftime("%A") == "Sunday") or (
@@ -117,6 +118,6 @@ def determine_peak(dto):
 print(date_year[4].strftime("%A-%H"))
 
 date_year['Peaks_Python'] = date_year.apply(lambda row: determine_peak(row))
+print(df_open_transactions)
+# df_open_transactions['Peaks_Python'] = date_year.apply(lambda row: determine_peak(row))
 print(date_year['Peaks_Python'].head(10))
-
-
