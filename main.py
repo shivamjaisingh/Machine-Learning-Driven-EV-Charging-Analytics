@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
+import datetime as dt
 from reading_data import data_meter_values, data_open_trans
 
 df_open_transactions = data_open_trans()
@@ -85,6 +86,37 @@ print(df_meter_values.columns.values)
 
 
 # print(on, mid, off)
-# # peaks = [on, mid, off]
-# # plt.pie(peaks)
-# # plt.show()
+# peaks = [on, mid, off]
+# plt.pie(peaks)
+# plt.show()
+
+
+date_year = pd.to_datetime(df_open_transactions['UTCTransactionStart'])
+
+def determine_peak(dto):
+    if dto.strftime("%B") in ["November", "December", "January", "February", "March", "April"]:
+        if (dto.strftime("%A") == "Saturday") or (dto.strftime("%A") == "Sunday") or (
+                23 >= int(dto.strftime("%H")) >= 19) or (
+                7 >= int(dto.strftime("%H")) >= 0):
+            return "OFF PEAK"
+        if 11 <= int(dto.strftime("%H")) <= 17:
+            return "MID PEAK"
+        else:
+            return "ON PEAK"
+    else:
+        if (dto.strftime("%A") == "Saturday") or (dto.strftime("%A") == "Sunday") or (
+                23 >= int(dto.strftime("%H")) >= 19) or (
+                7 >= int(dto.strftime("%H")) >= 0):
+            return "OFF PEAK"
+        if 11 <= int(dto.strftime("%H")) <= 17:
+            return "ON PEAK"
+        else:
+            return "MID PEAK"
+
+
+print(date_year[4].strftime("%A-%H"))
+
+date_year['Peaks_Python'] = date_year.apply(lambda row: determine_peak(row))
+print(date_year['Peaks_Python'].head(10))
+
+
