@@ -115,9 +115,17 @@ def determine_peak(dto):
             return "MID PEAK"
 
 
-print(date_year[4].strftime("%A-%H"))
-
 date_year['Peaks_Python'] = date_year.apply(lambda row: determine_peak(row))
-print(df_open_transactions)
+
+print(type(df_open_transactions))
+print(type(date_year))
+# print(df_open_transactions)
 # df_open_transactions['Peaks_Python'] = date_year.apply(lambda row: determine_peak(row))
-print(date_year['Peaks_Python'].head(10))
+# print(date_year['Peaks_Python'].head(10))
+
+df_open_transactions['Peaks_Python'] = date_year['Peaks_Python']
+
+print(df_open_transactions['Peaks_Python'])
+
+df_open_transactions.to_csv("dataset_new", sep=',', encoding='utf-8')
+
