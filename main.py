@@ -2,13 +2,15 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 import datetime as dt
-from reading_data import data_meter_values, data_open_trans
+from datetime import datetime
+from reading_data import data_open_trans
 
+# from reading_data import data_meter_values
 df_open_transactions = data_open_trans()
-df_meter_values = data_meter_values()
+# df_meter_values = data_meter_values()
 
 print(df_open_transactions.columns.values)
-print(df_meter_values.columns.values)
+# print(df_meter_values.columns.values)
 
 # print(df_open_transactions.describe(datetime_is_numeric=True, include="all").to_string())
 # print(df_open_transactions['TransactionStartTime'].head())
@@ -91,41 +93,106 @@ print(df_meter_values.columns.values)
 # plt.show()
 
 
-date_year = pd.to_datetime(df_open_transactions['UTCTransactionStart'])
-
-
-def determine_peak(dto):
-    if dto.strftime("%B") in ["November", "December", "January", "February", "March", "April"]:
-        if (dto.strftime("%A") == "Saturday") or (dto.strftime("%A") == "Sunday") or (
-                23 >= int(dto.strftime("%H")) >= 19) or (
-                7 >= int(dto.strftime("%H")) >= 0):
-            return "OFF PEAK"
-        if 11 <= int(dto.strftime("%H")) <= 17:
-            return "MID PEAK"
-        else:
-            return "ON PEAK"
-    else:
-        if (dto.strftime("%A") == "Saturday") or (dto.strftime("%A") == "Sunday") or (
-                23 >= int(dto.strftime("%H")) >= 19) or (
-                7 >= int(dto.strftime("%H")) >= 0):
-            return "OFF PEAK"
-        if 11 <= int(dto.strftime("%H")) <= 17:
-            return "ON PEAK"
-        else:
-            return "MID PEAK"
-
-
-date_year['Peaks_Python'] = date_year.apply(lambda row: determine_peak(row))
-
-print(type(df_open_transactions))
-print(type(date_year))
+# date_year = pd.to_datetime(df_open_transactions['UTCTransactionStart'])
+#
+#
+# def determine_peak(dto):
+#     if dto.strftime("%B") in ["November", "December", "January", "February", "March", "April"]:
+#         if (dto.strftime("%A") == "Saturday") or (dto.strftime("%A") == "Sunday") or (
+#                 23 >= int(dto.strftime("%H")) >= 19) or (
+#                 7 >= int(dto.strftime("%H")) >= 0):
+#             return "OFF PEAK"
+#         if 11 <= int(dto.strftime("%H")) <= 17:
+#             return "MID PEAK"
+#         else:
+#             return "ON PEAK"
+#     else:
+#         if (dto.strftime("%A") == "Saturday") or (dto.strftime("%A") == "Sunday") or (
+#                 23 >= int(dto.strftime("%H")) >= 19) or (
+#                 7 >= int(dto.strftime("%H")) >= 0):
+#             return "OFF PEAK"
+#         if 11 <= int(dto.strftime("%H")) <= 17:
+#             return "ON PEAK"
+#         else:
+#             return "MID PEAK"
+#
+#
+# date_year['Peaks_Python'] = date_year.apply(lambda row: determine_peak(row))
+#
+# print(type(df_open_transactions))
+# print(type(date_year))
 # print(df_open_transactions)
 # df_open_transactions['Peaks_Python'] = date_year.apply(lambda row: determine_peak(row))
 # print(date_year['Peaks_Python'].head(10))
 
-df_open_transactions['Peaks_Python'] = date_year['Peaks_Python']
+# df_open_transactions['Peaks_Python'] = date_year['Peaks_Python']
+#
+# print(df_open_transactions['Peaks_Python'])
+#
+# df_open_transactions.to_csv("dataset_new", sep=',', encoding='utf-8')
 
-print(df_open_transactions['Peaks_Python'])
+time_start = pd.to_datetime(df_open_transactions['UTCTransactionStart'])
+time_stop = pd.to_datetime(df_open_transactions['UTCTransactionStop'])
 
-df_open_transactions.to_csv("dataset_new", sep=',', encoding='utf-8')
 
+def determine_peak_distribution(transaction_stop_time, transaction_start_time):
+    on_hours = float(0)
+    mid_hours = float(0)
+    off_hours = float(0)
+
+    total_hours_left = (transaction_stop_time - transaction_start_time)
+    total_hours_left = total_hours_left.total_seconds() / 3600
+    tt = total_hours_left
+    start_hour = float(transaction_start_time.strftime("%H")) + float(transaction_start_time.strftime("%M")) / 60
+    print("Total Hours: ", total_hours_left, "Start Hour: ", start_hour)
+    i = 0
+    while total_hours_left > 0:
+        print("Loop: ", i)
+        i = i + 1
+        if 0 <= start_hour < 7:  # only when time lies between 12 AM to 7 AM
+            print("0-7")
+            time_charged = total_hours_left if start_hour + total_hours_left < 7 else 7 - start_hour
+            off_hours = off_hours + time_charged
+            start_hour = start_hour if start_hour + total_hours_left < 7 else 7
+            total_hours_left = total_hours_left - time_charged
+            print("Total Hours Left: ", total_hours_left, "Off Hours: ", off_hours, "Time Charged: ", time_charged,
+                  "Start Hour: ", start_hour)
+        if 7 <= start_hour < 11:
+            print("7-11")
+            time_charged = total_hours_left if start_hour + total_hours_left < 11 else 11 - start_hour
+            on_hours = on_hours + time_charged
+            start_hour = start_hour if start_hour + total_hours_left < 11 else 11
+            total_hours_left = total_hours_left - time_charged
+            print("Total Hours Left: ", total_hours_left, "On Hours: ", on_hours, "Time Charged: ", time_charged,
+                  "Start Hour: ", start_hour)
+
+        if 11 <= start_hour < 17:
+            print("11-17")
+            time_charged = total_hours_left if start_hour + total_hours_left < 17 else 17 - start_hour
+            mid_hours = mid_hours + time_charged
+            start_hour = start_hour if start_hour + total_hours_left < 17 else 17
+            total_hours_left = total_hours_left - time_charged
+            print("Total Hours Left: ", total_hours_left, "Mid Hours: ", mid_hours, "Time Charged: ", time_charged,
+                  "Start Hour: ", start_hour)
+
+        if 17 <= start_hour < 19:
+            print("17-19")
+            time_charged = total_hours_left if start_hour + total_hours_left < 19 else 19 - start_hour
+            on_hours = on_hours + time_charged
+            start_hour = start_hour if start_hour + total_hours_left < 19 else 19
+            total_hours_left = total_hours_left - time_charged
+            print("Total Hours Left: ", total_hours_left, "On Hours: ", on_hours, "Time Charged: ", time_charged,
+                  "Start Hour: ", start_hour)
+
+        if 19 <= start_hour < 24:
+            time_charged = total_hours_left if start_hour + total_hours_left < 24 else 24 - start_hour
+            off_hours = off_hours + time_charged
+            start_hour = start_hour if start_hour + total_hours_left < 24 else 0
+            total_hours_left = total_hours_left - time_charged
+            print("Total Hours Left: ", total_hours_left, "Off Hours: ", off_hours, "Time Charged: ", time_charged,
+                  "Start Hour: ", start_hour)
+
+    print("Total Hours: ", tt, "Off Hours: ", off_hours, "Mid Hours: ", mid_hours, "On Hours: ", on_hours)
+
+
+determine_peak_distribution(time_stop[37], time_start[37])
