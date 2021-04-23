@@ -4,6 +4,7 @@ import pandas as pd
 import datetime as dt
 from datetime import datetime
 from reading_data import data_open_trans
+from sklearn import mixture
 
 # from reading_data import data_meter_values
 df_open_transactions = data_open_trans()
@@ -144,13 +145,13 @@ def determine_peak_distribution(transaction_stop_time, transaction_start_time):
         off_hours = float(0)
         total_hours_left = (transaction_stop_time - transaction_start_time)
         total_hours_left = total_hours_left.total_seconds() / 3600
-        if transaction_start_time.strftime("%A") and transaction_stop_time.strftime("%A") in ["Saturday", "Sunday"]:
-            off_hours = total_hours_left
-            mid_hours = 0
-            on_hours = 0
-            print("Total Hours:", total_hours_left, "Off Hours:", off_hours, "Mid Hours:", mid_hours,
-                  "On Hours:", on_hours)
-            return
+        # if transaction_start_time.strftime("%A") and transaction_stop_time.strftime("%A") in ["Saturday", "Sunday"]:
+        #     off_hours = total_hours_left
+        #     mid_hours = 0
+        #     on_hours = 0
+        #     print("Total Hours:", total_hours_left, "Off Hours:", off_hours, "Mid Hours:", mid_hours,
+        #           "On Hours:", on_hours)
+        #     return
         tt = total_hours_left
         start_hour = float(transaction_start_time.strftime("%H")) + float(transaction_start_time.strftime("%M")) / 60
         print("Total Hours: ", total_hours_left, "Start Hour: ", start_hour)
@@ -271,4 +272,4 @@ def determine_peak_distribution(transaction_stop_time, transaction_start_time):
         print("Total Hours:", tt, "Off Hours:", off_hours, "Mid Hours:", mid_hours, "On Hours:", on_hours)
 
 
-determine_peak_distribution(time_stop[21], time_start[21])
+determine_peak_distribution(time_stop[7], time_start[7])
