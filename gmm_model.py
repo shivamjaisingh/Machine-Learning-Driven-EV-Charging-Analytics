@@ -22,4 +22,5 @@ print(df_open_transactions.columns.values)
 
 data = df_open_transactions[['Start Integer Hour_P', 'ConnectedTime']]
 
+
 gmm = GaussianMixture(n_components=2, covariance_type='full').fit(data)
