@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 from sklearn.mixture import GaussianMixture
 from datetime import datetime
 import pandas as pd
-import numpy as np
 from reading_data import data_open_trans
 
 df_open_transactions = data_open_trans()
@@ -34,7 +33,6 @@ gmm = GaussianMixture(n_components=9, covariance_type='full').fit(data)
 # print('\n')
 # print(gmm.covariances_)
 
-# predictions from kmeans
 labels = gmm.predict(data)
 print(labels)
 frame = pd.DataFrame(data)
@@ -42,10 +40,12 @@ frame['cluster'] = labels
 frame.columns = ['Start Integer Hour_P', 'ConnectedTime', 'cluster']
 
 # plotting results
-color = ['green', 'red', 'blue', 'cyan', 'magenta', 'yellow', 'black', 'orange', 'pink']
+color = ['lightgreen', 'red', 'blue', 'cyan', 'magenta', 'yellow', 'black', 'orange', 'pink']
+marker_r = ["*", "+", "x", "3", ".", "o", "p", "D", "2"]
 for k in range(0, 9):
     data = frame[frame["cluster"] == k]
-    plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], c=color[k], s=2)
+    plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], marker_r[2], c=color[k],
+                s=2, alpha=0.3)
 
 plt.title('GMM Visualization with 9 clusters of charging sessions')
 plt.xlabel('Start Connection Hour ')
