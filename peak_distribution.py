@@ -9,6 +9,12 @@ time_stop = pd.to_datetime(df_open_transactions['UTCTransactionStop'])
 
 def determine_peak_distribution(transaction_stop_time, transaction_start_time):
     # print(transaction_start_time.strftime("%A") in ["Saturday", "Sunday"])
+    if (transaction_start_time.strftime("%A") in ["Saturday", "Sunday"]) and (transaction_stop_time.strftime("%A") in
+                                                                              ["Saturday", "Sunday"]):
+        total_hours_left = (transaction_stop_time - transaction_start_time)
+        total_hours_left = total_hours_left.total_seconds() / 3600
+        print("0, " + str(round(total_hours_left, 2)) + ", 0")
+        return
 
     if transaction_start_time.strftime("%B") in ["November", "December", "January", "February", "March", "April"]:
         on_hours = float(0)
@@ -140,7 +146,7 @@ def determine_peak_distribution(transaction_stop_time, transaction_start_time):
                 print("Total Hours Left:", total_hours_left, "Off Hours:", off_hours, "Time Charged:", time_charged,
                       "Start Hour:", start_hour)
 
-        print("Total Hours:", tt, "Off Hours:", off_hours, "Mid Hours:", mid_hours, "On Hours:", on_hours)
+        return str(round(on_hours)) + ", " + str(round(off_hours, 2)) + ", " + str(round(mid_hours, 2))
 
 
-determine_peak_distribution(time_stop[7], time_start[7])
+determine_peak_distribution(time_stop[27], time_start[27])
