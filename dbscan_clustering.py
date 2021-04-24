@@ -18,7 +18,7 @@ df_open_transactions['Start Integer Hour_P'] = start_time.apply(lambda row: crea
 
 print(df_open_transactions.columns.values)
 df_open_transactions['ConnectedTime'] = pd.to_numeric(df_open_transactions['ConnectedTime'])
-df_open_transactions = df_open_transactions[df_open_transactions['ConnectedTime'] <= 80]
+df_open_transactions = df_open_transactions[df_open_transactions['ConnectedTime'] <= 25]
 data = df_open_transactions[['Start Integer Hour_P', 'ConnectedTime']]
 
 plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], s=2)
@@ -27,7 +27,7 @@ plt.xlabel('Start Connection Hour ')
 plt.ylabel('Total Hours Connected')
 plt.show()
 
-dbscan = DBSCAN(eps=0.90, min_samples=20).fit(data)
+dbscan = DBSCAN(eps=0.9, min_samples=20).fit(data)
 core_samples_mask = np.zeros_like(dbscan.labels_, dtype=bool)
 core_samples_mask[dbscan.core_sample_indices_] = True
 labels = dbscan.labels_

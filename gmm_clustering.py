@@ -19,7 +19,7 @@ print(df_open_transactions.columns.values)
 
 # print(df_open_transactions['Start Integer Hour_P'])
 df_open_transactions['ConnectedTime'] = pd.to_numeric(df_open_transactions['ConnectedTime'])
-df_open_transactions = df_open_transactions[df_open_transactions['ConnectedTime'] <= 80]
+df_open_transactions = df_open_transactions[df_open_transactions['ConnectedTime'] <= 25]
 data = df_open_transactions[['Start Integer Hour_P', 'ConnectedTime']]
 
 plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], s=2)
@@ -28,7 +28,7 @@ plt.xlabel('Start Connection Hour ')
 plt.ylabel('Total Hours Connected')
 plt.show()
 
-n_components = 6
+n_components = 4
 gmm = GaussianMixture(n_components=n_components, covariance_type='full').fit(data)
 
 labels = gmm.predict(data)

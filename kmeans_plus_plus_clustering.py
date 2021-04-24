@@ -20,7 +20,7 @@ df_open_transactions['Start Integer Hour_P'] = start_time.apply(lambda row: crea
 
 # print(df_open_transactions['Start Integer Hour_P'])
 df_open_transactions['ConnectedTime'] = pd.to_numeric(df_open_transactions['ConnectedTime'])
-df_open_transactions = df_open_transactions[df_open_transactions['ConnectedTime'] <= 80]
+df_open_transactions = df_open_transactions[df_open_transactions['ConnectedTime'] <= 25]
 data = df_open_transactions[['Start Integer Hour_P', 'ConnectedTime']]
 # y_true = df_open_transactions['ConnectedTime']
 # y_true = y_true.to_numpy()
@@ -33,7 +33,7 @@ plt.title('Start Time and Total Connected Time')
 plt.xlabel('Start Connection Hour ')
 plt.ylabel('Total Hours Connected')
 plt.show()
-n_clusters = 4
+n_clusters = 4  # determine number of clusters
 kmeans = KMeans(n_clusters=n_clusters, init='k-means++', random_state=0).fit(data)
 labels = kmeans.labels_
 print(labels)
@@ -50,7 +50,7 @@ for k in range(0, 9):
     plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], c=color[k],
                 s=2, alpha=0.3)
 
-plt.title('GMM Visualization with ' + str(n_clusters) + ' clusters')
+plt.title('K-Means++ Visualization with ' + str(n_clusters) + ' clusters')
 plt.xlabel('Start Connection Hour ')
 plt.ylabel('Total Hours Connected')
 plt.show()
