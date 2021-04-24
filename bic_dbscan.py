@@ -24,12 +24,6 @@ df_open_transactions['ConnectedTime'] = pd.to_numeric(df_open_transactions['Conn
 df_open_transactions = df_open_transactions[df_open_transactions['ConnectedTime'] <= 80]
 data = df_open_transactions[['Start Integer Hour_P', 'ConnectedTime']]
 
-# plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], s=2)
-# plt.title('Start Time and Total Connected Time')
-# plt.xlabel('Start Connection Hour ')
-# plt.ylabel('Total Hours Connected')
-# plt.show()
-
 neigh = NearestNeighbors(n_neighbors=2)
 nbrs = neigh.fit(data)
 distances, indices = nbrs.kneighbors(data)
