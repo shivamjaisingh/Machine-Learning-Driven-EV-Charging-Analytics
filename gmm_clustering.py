@@ -28,8 +28,8 @@ plt.xlabel('Start Connection Hour ')
 plt.ylabel('Total Hours Connected')
 plt.show()
 
-gmm = GaussianMixture(n_components=6, covariance_type='full').fit(data)
-
+n_components = 6
+gmm = GaussianMixture(n_components=n_components, covariance_type='full').fit(data)
 
 labels = gmm.predict(data)
 print(labels)
@@ -45,7 +45,7 @@ for k in range(0, 9):
     plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], c=color[k],
                 s=2, alpha=0.3)
 
-plt.title('GMM Visualization with 6 clusters of charging sessions')
+plt.title('GMM Visualization with ' + str(n_components) + ' clusters of charging sessions')
 plt.xlabel('Start Connection Hour ')
 plt.ylabel('Total Hours Connected')
 plt.show()
