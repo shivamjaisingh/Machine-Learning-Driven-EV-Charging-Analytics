@@ -1,5 +1,4 @@
 from sklearn.cluster import DBSCAN
-from datetime import datetime
 from reading_data import data_open_trans
 import matplotlib.pyplot as plt
 import pandas as pd
