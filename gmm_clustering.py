@@ -18,7 +18,8 @@ df_open_transactions['Start Integer Hour_P'] = start_time.apply(lambda row: crea
 print(df_open_transactions.columns.values)
 
 # print(df_open_transactions['Start Integer Hour_P'])
-
+df_open_transactions['ConnectedTime'] = pd.to_numeric(df_open_transactions['ConnectedTime'])
+df_open_transactions = df_open_transactions[df_open_transactions['ConnectedTime'] <= 80]
 data = df_open_transactions[['Start Integer Hour_P', 'ConnectedTime']]
 
 plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], s=2)
