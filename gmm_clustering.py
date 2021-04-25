@@ -39,7 +39,7 @@ frame['cluster'] = labels
 frame.columns = ['Start Integer Hour_P', 'ConnectedTime', 'cluster']
 
 # plotting results
-color = ['lightgreen', 'yellow', 'pink', 'orange', 'magenta', 'yellow', 'black', 'orange', 'pink']
+color = ['lightgreen', 'yellow', 'deeppink', 'orange', 'magenta', 'yellow', 'black', 'orange', 'pink']
 marker_r = ["*", "+", "x", "3", ".", "o", "p", "D", "2"]
 for k in range(0, 4):
     data = frame[frame["cluster"] == k]
