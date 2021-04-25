@@ -42,7 +42,7 @@ print("Number of Noise points: ", n_noise_)
 
 unique_labels = set(labels)
 # colors = ['lightgreen', 'yellow', 'deeppink', 'orange', 'magenta', 'yellow', 'black', 'orange', 'pink']
-colors = [plt.cm.tab20(each) for each in np.linspace(0, 1, len(unique_labels))]
+colors = [plt.cm.tab10(each) for each in np.linspace(0, 1, len(unique_labels))]
 for k, col in zip(unique_labels, colors):
     if k == -1:
         # Black used for noise.
