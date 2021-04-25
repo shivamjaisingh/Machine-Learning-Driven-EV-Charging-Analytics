@@ -30,5 +30,15 @@ distances, indices = nbrs.kneighbors(data)
 
 distances = np.sort(distances, axis=0)
 distances = distances[:, 1]
-plt.plot(distances)
+fig = plt.figure(figsize=(16, 8))
+ax = plt.axes()
+
+fig.patch.set_facecolor('xkcd:salmon')
+plt.plot(distances, c='black')
+# plt.xlabel('Start Connection Hour ')
+plt.ylabel('Epsilon Value')
+plt.title('THe BIC method showing the optimal value of Epsilon')
+ax.minorticks_on()
+ax.grid(True, which='both', linestyle='-')
+plt.grid()
 plt.show()

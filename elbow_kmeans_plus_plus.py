@@ -2,6 +2,7 @@ from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 import pandas as pd
 from reading_data import data_open_trans
+plt.rcParams.update(plt.rcParamsDefault)
 
 df_open_transactions = data_open_trans()
 
@@ -29,9 +30,12 @@ for k in K:
     kmeanModel.fit(df)
     distortions.append(kmeanModel.inertia_)
 
-plt.figure(figsize=(16, 8))
-plt.plot(K, distortions, 'bx-')
+fig = plt.figure(figsize=(16, 8))
+plt.grid()
+fig.patch.set_facecolor('xkcd:salmon')
+plt.plot(K, distortions, 'ko-')
 plt.xlabel('k')
 plt.ylabel('Distortion')
 plt.title('The Elbow Method showing the optimal k')
 plt.show()
+
