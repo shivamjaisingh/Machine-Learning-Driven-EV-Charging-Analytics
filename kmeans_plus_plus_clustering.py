@@ -28,7 +28,8 @@ data = df_open_transactions[['Start Integer Hour_P', 'ConnectedTime']]
 print(data['Start Integer Hour_P'])
 print(data['ConnectedTime'])
 
-plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], s=2)
+plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], edgecolors='k',
+            s=45, alpha=.8, c='royalblue')
 plt.title('Start Time and Total Connected Time')
 plt.xlabel('Start Connection Hour ')
 plt.ylabel('Total Hours Connected')
@@ -43,7 +44,7 @@ frame['cluster'] = labels
 frame.columns = ['Start Integer Hour_P', 'ConnectedTime', 'cluster']
 
 # plotting results
-color = ['lightgreen', 'yellow', 'pink', 'orange', 'magenta', 'yellow', 'black', 'orange', 'pink']
+color = ['lightgreen', 'yellow', 'deeppink', 'orange', 'magenta', 'yellow', 'black', 'orange', 'pink']
 marker_r = ["*", "+", "x", "3", ".", "o", "p", "D", "2"]
 for k in range(0, 9):
     data = frame[frame["cluster"] == k]
