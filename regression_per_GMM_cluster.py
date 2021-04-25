@@ -63,15 +63,3 @@ plt.xlabel('Start Connection Hour ')
 plt.ylabel('Total Hours Connected')
 plt.show()
 
-# x = data['Start Integer Hour_P'].to_numpy().reshape(-1, 1)
-# y = data['ConnectedTime'].to_numpy()
-#
-# reg = LinearRegression().fit(x, y)
-#
-# y_pred = reg.predict(x)
-
-# print(cross_val_score(LinearRegression(), x, y, cv=10))
-# print("Score :"+str(reg.score(x, y)*100))
-# print(reg.coef_)
-# print(reg.intercept_)
-# print(reg.predict(np.array([[19]])))
