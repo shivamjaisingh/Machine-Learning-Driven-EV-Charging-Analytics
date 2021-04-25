@@ -57,9 +57,27 @@ for k in range(0, 4):
 
     plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], c=color[k], edgecolors='k',
                 s=50, alpha=.8)
+    max_x = round(float(max(x)), 2)
+    max_y = round(float(max(y)), 2)
+    min_x = round(float(min(x)), 2)
+    min_y = round(float(min(y)), 2)
+    plt.xlabel(str(min_x) + '<= Start Connection Hour <=' + str(max_x))
+    plt.ylabel(str(min_y) + '<= Total Hours Connected <=' + str(max_y))
+    plt.savefig(str(k + 1) + "-Cluster", dpi=600)
+    plt.close()
+
+color = ['lightgreen', 'yellow', 'deeppink', 'orange', 'magenta', 'yellow', 'black', 'orange', 'pink']
+marker_r = ["*", "+", "x", "3", ".", "o", "p", "D", "2"]
+for k in range(0, 4):
+    data = frame[frame["cluster"] == k]
+    print("shape: " + str(data.shape))
+
+    plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], c=color[k], edgecolors='k',
+                s=50, alpha=.8)
 
 plt.title('GMM Visualization with ' + str(n_components) + ' clusters of charging sessions')
 plt.xlabel('Start Connection Hour ')
 plt.ylabel('Total Hours Connected')
+plt.savefig('gmm_fig', dpi=600)
 plt.show()
 
