@@ -52,12 +52,12 @@ for k, col in zip(unique_labels, colors):
     xy = data[class_member_mask & core_samples_mask]
     plt.plot(xy['Start Integer Hour_P'], xy['ConnectedTime'], 'o', markerfacecolor=tuple(col),
              markeredgecolor='k',
-             markersize=6, alpha=0.3)
+             markersize=6, alpha=0.8)
 
     xy = data[class_member_mask & ~core_samples_mask]
     plt.plot(xy['Start Integer Hour_P'], xy['ConnectedTime'], 'o', markerfacecolor=tuple(col),
              markeredgecolor='k',
-             markersize=2, alpha=0.3)
+             markersize=6, alpha=0.8)
 
 plt.title('Estimated number of clusters through DBSCAN: %d' % n_clusters_)
 plt.xlabel('Start Connection Hour ')
