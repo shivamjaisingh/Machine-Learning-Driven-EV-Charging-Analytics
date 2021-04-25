@@ -63,7 +63,7 @@ for k in range(0, 4):
     min_y = round(float(min(y)), 2)
     plt.xlabel(str(min_x) + '<= Start Connection Hour <=' + str(max_x))
     plt.ylabel(str(min_y) + '<= Total Hours Connected <=' + str(max_y))
-    plt.savefig(str(k + 1) + "-Cluster", dpi=600)
+    plt.savefig("cluster-"+str(k + 1), dpi=600)
     plt.close()
 
 color = ['lightgreen', 'yellow', 'deeppink', 'orange', 'magenta', 'yellow', 'black', 'orange', 'pink']
