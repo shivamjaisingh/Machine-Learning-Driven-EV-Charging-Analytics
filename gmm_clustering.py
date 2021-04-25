@@ -28,7 +28,7 @@ plt.xlabel('Start Connection Hour ')
 plt.ylabel('Total Hours Connected')
 plt.show()
 
-n_components = 4
+n_components = 5
 gmm = GaussianMixture(n_components=n_components, covariance_type='full').fit(data)
 
 labels = gmm.predict(data)
