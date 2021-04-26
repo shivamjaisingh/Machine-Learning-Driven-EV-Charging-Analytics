@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.mixture import GaussianMixture
 import pandas as pd
 from reading_data import data_open_trans
+
 # from sklearn.model_selection import cross_val_score
 
 df_open_transactions = data_open_trans()
@@ -52,6 +53,7 @@ frame.columns = ['Start Integer Hour_P', 'ConnectedTime', 'TotalEnergy', 'cluste
 print(frame['cluster'].nunique())
 # plotting results
 color = ['lightgreen', 'yellow', 'deeppink', 'orange', 'magenta', 'yellow', 'black', 'orange', 'pink']
+row_color = [['palegreen'], ['khaki'], ['plum'], ['orange']]
 marker_r = ["*", "+", "x", "3", ".", "o", "p", "D", "2"]
 for k in range(0, 4):
     data = frame[frame["cluster"] == k]
@@ -60,33 +62,49 @@ for k in range(0, 4):
     y = data['TotalEnergy'].to_numpy()
     reg = LinearRegression().fit(x, y)  # only using start connection hour as input ||
     y_pred = reg.predict(x)
-    print("Prediction of total energy used with " + str(color[k]) + " cluster at 7 PM " + str(reg.predict(np.array([[19]]))))
-    # print("Score :" + str(reg.score(x, y) * 100))
-    plt.xlim(-1, 26)
-    plt.ylim(-1, 26)
-    plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], c=color[k], edgecolors='k',
-                s=50, alpha=.8)
-    max_x = round(float(max(x)), 2)
-    max_y = round(float(max(y)), 2)
-    min_x = round(float(min(x)), 2)
-    min_y = round(float(min(y)), 2)
-    plt.xlabel(str(min_x) + '<= Start Connection Hour <=' + str(max_x))
-    plt.ylabel(str(min_y) + '<= Total Hours Connected <=' + str(max_y))
-    plt.savefig("cluster-" + str(k + 1), dpi=600)
+    energy_predicted = [round(float(reg.predict(np.array([[hour]]))), 2) for hour in range(24)]
+    start_hours = range(0, 24)
+    energy_per_start_hour = pd.DataFrame(list(zip(start_hours, energy_predicted)),
+                                         columns=['Connection Start Hour', 'Total Energy'])
+    plt.axis('off')
+    plt.axis('tight')
+    plt.table(cellText=energy_per_start_hour.values, colLabels=energy_per_start_hour.columns,
+              cellLoc='center', colColours=row_color[k] * 2,
+              loc='center')
+    plt.title("Energy prediction for cluster of color " + str(color[k]), y=1.08)
+    plt.savefig("table-for-"+str(color[k]), dpi=600)
     plt.show()
     plt.close()
+    # print(hours_per_start_hour.shape)
 
-color = ['lightgreen', 'yellow', 'deeppink', 'orange', 'magenta', 'yellow', 'black', 'orange', 'pink']
-marker_r = ["*", "+", "x", "3", ".", "o", "p", "D", "2"]
-for k in range(0, 4):
-    data = frame[frame["cluster"] == k]
-    print("shape: " + str(data.shape))
+    # print("Prediction of total energy used with " + str(color[k]) +
+    #       " cluster at 7 PM " + str(reg.predict(np.array([[19]]))))
+    # print("Score :" + str(reg.score(x, y) * 100))
+    # plt.xlim(-1, 26)
+    # plt.ylim(-1, 26)
+    # plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], c=color[k], edgecolors='k',
+    #             s=50, alpha=.8)
+    # max_x = round(float(max(x)), 2)
+    # max_y = round(float(max(y)), 2)
+    # min_x = round(float(min(x)), 2)
+    # min_y = round(float(min(y)), 2)
+    # plt.xlabel(str(min_x) + '<= Start Connection Hour <=' + str(max_x))
+    # plt.ylabel(str(min_y) + '<= Total Hours Connected <=' + str(max_y))
+    # plt.savefig("cluster " + str(color[k]), dpi=600)
+    # plt.show()
+    # plt.close()
 
-    plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], c=color[k], edgecolors='k',
-                s=50, alpha=.8)
-
-plt.title('GMM Visualization with ' + str(n_components) + ' clusters of charging sessions')
-plt.xlabel('Start Connection Hour ')
-plt.ylabel('Total Hours Connected')
-plt.savefig('gmm_fig', dpi=600)
-plt.show()
+# color = ['lightgreen', 'yellow', 'deeppink', 'orange', 'magenta', 'yellow', 'black', 'orange', 'pink']
+# marker_r = ["*", "+", "x", "3", ".", "o", "p", "D", "2"]
+# for k in range(0, 4):
+#     data = frame[frame["cluster"] == k]
+#     print("shape: " + str(data.shape))
+#
+#     plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], c=color[k], edgecolors='k',
+#                 s=50, alpha=.8)
+#
+# plt.title('GMM Visualization with ' + str(n_components) + ' clusters of charging sessions')
+# plt.xlabel('Start Connection Hour ')
+# plt.ylabel('Total Hours Connected')
+# plt.savefig('gmm_fig', dpi=600)
+# plt.show()
