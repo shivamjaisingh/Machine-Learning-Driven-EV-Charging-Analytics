@@ -67,6 +67,44 @@ df_open_transactions = data_open_trans()
 # transaction count per day of the week
 
 
+# total_energy_units_day_night = (df_open_transactions.groupby(['Day/Night'])['TotalEnergy'].sum())
+# total_transactions_units_day_night = (df_open_transactions.groupby(['Day/Night']).count())
+#
+# print(total_energy_units_day_night)
+# print(total_energy_units_day_night)
+
+
+# Day/Night - Transactions
+# Day/Night - Transactions
+
+# chargeTime = df_open_transactions['ChargeTime'] > 0
+# day = df_open_transactions['Day/Night'] == "Day"
+# night = df_open_transactions['Day/Night'] == "Night"
+#
+# day_charge = df_open_transactions[chargeTime & day]
+# night_charge = df_open_transactions[chargeTime & night]
+# # print(type(day_charge), day_charge.shape)
+# # print(type(night_charge), night_charge.shape)
+# plt.axis(True)
+# fig = plt.figure()
+# plt.grid()
+# # ax = plt.axis
+# # ax.minorticks_on()
+# fig.patch.set_facecolor('xkcd:lightblue')
+# day_charge['ChargeTime'].hist(bins=50, alpha=0.5, color='yellow', edgecolor='pink')
+# night_charge['ChargeTime'].hist(bins=50, alpha=0.5, color='black', edgecolor='white')
+# plt.xlabel('Hour of the day (Starting Hour of the Transaction)')
+# plt.ylabel('Transactions')
+# plt.title('Day/Night - Transactions')
+# plt.savefig('trans_day_night', dpi=600)
+# plt.show()
+
+# Day/Night - Transactions
+# Day/Night - Transactions
+
+
+
+
 
 
 
@@ -104,8 +142,6 @@ df_open_transactions = data_open_trans()
 # sns.countplot(df_open_transactions['Day/Night'])
 # plt.show()
 #
-# sns.countplot(df_open_transactions['Day of the Week'])
-# plt.show()
 #
 # x1 = df_open_transactions['TransactionId']
 # y1 = df_open_transactions['ConnectedTime']
