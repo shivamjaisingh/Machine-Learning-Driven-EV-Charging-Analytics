@@ -54,4 +54,5 @@ for k in range(0, 9):
 plt.title('K-Means++ Visualization with ' + str(n_clusters) + ' clusters')
 plt.xlabel('Start Connection Hour ')
 plt.ylabel('Total Hours Connected')
+plt.savefig('kmeans_plus_plus', dpi=600)
 plt.show()

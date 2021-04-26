@@ -63,4 +63,5 @@ for k, col in zip(unique_labels, colors):
 plt.title('Estimated number of clusters through DBSCAN: %d' % n_clusters_)
 plt.xlabel('Start Connection Hour ')
 plt.ylabel('Total Hours Connected')
+plt.savefig('dbscan', dpi=600)
 plt.show()

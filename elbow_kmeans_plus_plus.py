@@ -37,5 +37,6 @@ plt.plot(K, distortions, 'ko-')
 plt.xlabel('k')
 plt.ylabel('Distortion')
 plt.title('The Elbow Method showing the optimal k')
+plt.savefig('elbow_means', dpi=600)
 plt.show()
 
