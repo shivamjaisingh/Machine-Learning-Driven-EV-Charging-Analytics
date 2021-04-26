@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.mixture import GaussianMixture
 import pandas as pd
 from reading_data import data_open_trans
-from sklearn.model_selection import cross_val_score
+# from sklearn.model_selection import cross_val_score
 
 df_open_transactions = data_open_trans()
 print(df_open_transactions.columns.values)
@@ -25,14 +25,13 @@ df_open_transactions['ConnectedTime'] = pd.to_numeric(df_open_transactions['Conn
 df_open_transactions = df_open_transactions[df_open_transactions['ConnectedTime'] <= 25]
 data = df_open_transactions[['Start Integer Hour_P', 'ConnectedTime', 'TotalEnergy']]
 
-plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], edgecolors='k',
+plt.scatter(data['Start Integer Hour_P'], data['TotalEnergy'], edgecolors='k',
             s=45, alpha=.8, c='royalblue')
 plt.title('Start Time and Total Connected Time')
 plt.xlabel('Start Connection Hour ')
 plt.ylabel('Total Hours Connected')
-plt.savefig('scatter', dpi=600)
+plt.savefig('scatter_energy', dpi=600)
 plt.show()
-
 
 # pp predict -- total hours connected
 # input is start hour
@@ -41,27 +40,28 @@ plt.show()
 # input -- start hour
 
 n_components = 4
-gmm = GaussianMixture(n_components=n_components, covariance_type='full', random_state=300140951).fit(data)
+gmm = GaussianMixture(n_components=n_components, covariance_type='full',
+                      random_state=300140951).fit(data[['Start Integer Hour_P', 'ConnectedTime']])
 
-labels = gmm.predict(data)
+labels = gmm.predict(data[['Start Integer Hour_P', 'ConnectedTime']])
 print(labels)
 frame = pd.DataFrame(data)
 frame['cluster'] = labels
-frame.columns = ['Start Integer Hour_P', 'ConnectedTime', 'cluster', 'TotalEnergy']
-
+frame.columns = ['Start Integer Hour_P', 'ConnectedTime', 'TotalEnergy', 'cluster']
+#
 print(frame['cluster'].nunique())
 # plotting results
 color = ['lightgreen', 'yellow', 'deeppink', 'orange', 'magenta', 'yellow', 'black', 'orange', 'pink']
 marker_r = ["*", "+", "x", "3", ".", "o", "p", "D", "2"]
 for k in range(0, 4):
     data = frame[frame["cluster"] == k]
-    print("shape: " + str(data.shape))
+    # print("shape: " + str(data.shape))
     x = data['Start Integer Hour_P'].to_numpy().reshape(-1, 1)
-    y = data['ConnectedTime'].to_numpy()
+    y = data['TotalEnergy'].to_numpy()
     reg = LinearRegression().fit(x, y)  # only using start connection hour as input ||
     y_pred = reg.predict(x)
-    print("Prediction with: " + str(k) + str(reg.predict(np.array([[19]]))))
-    print("Score :" + str(reg.score(x, y) * 100))
+    print("Prediction of total energy used with " + str(color[k]) + " cluster at 7 PM " + str(reg.predict(np.array([[19]]))))
+    # print("Score :" + str(reg.score(x, y) * 100))
     plt.xlim(-1, 26)
     plt.ylim(-1, 26)
     plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], c=color[k], edgecolors='k',
