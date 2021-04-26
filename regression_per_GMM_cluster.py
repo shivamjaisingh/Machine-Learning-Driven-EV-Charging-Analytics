@@ -30,6 +30,7 @@ plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], edgecolors='k',
 plt.title('Start Time and Total Connected Time')
 plt.xlabel('Start Connection Hour ')
 plt.ylabel('Total Hours Connected')
+plt.savefig('scatter', dpi=600)
 plt.show()
 
 n_components = 4
@@ -54,7 +55,8 @@ for k in range(0, 4):
     y_pred = reg.predict(x)
     print("Prediction with: " + str(k) + str(reg.predict(np.array([[19]]))))
     print("Score :" + str(reg.score(x, y) * 100))
-
+    plt.xlim(-1, 26)
+    plt.ylim(-1, 26)
     plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], c=color[k], edgecolors='k',
                 s=50, alpha=.8)
     max_x = round(float(max(x)), 2)
@@ -64,6 +66,7 @@ for k in range(0, 4):
     plt.xlabel(str(min_x) + '<= Start Connection Hour <=' + str(max_x))
     plt.ylabel(str(min_y) + '<= Total Hours Connected <=' + str(max_y))
     plt.savefig("cluster-"+str(k + 1), dpi=600)
+    plt.show()
     plt.close()
 
 color = ['lightgreen', 'yellow', 'deeppink', 'orange', 'magenta', 'yellow', 'black', 'orange', 'pink']
