@@ -10,7 +10,65 @@ from sklearn import mixture
 df_open_transactions = data_open_trans()
 # df_meter_values = data_meter_values()
 
-print(df_open_transactions.columns.values)
+# Charging transactions per hour of the day.
+# Charging transactions per hour of the day.
+
+
+# print(df_open_transactions.columns.values)
+# start_time = pd.to_datetime(df_open_transactions['UTCTransactionStart'])
+#
+#
+# def creating_hour_values(transaction_start_time):
+#     return int(float(transaction_start_time.strftime("%H")) + float(transaction_start_time.strftime("%M")) / 60)
+#
+#
+# df_open_transactions['Start Integer Hour_P'] = start_time.apply(lambda row: creating_hour_values(row))
+# df = pd.DataFrame(df_open_transactions.groupby(['Start Integer Hour_P'])['TransactionId'].count())
+# print(df.shape)
+# y = pd.DataFrame(df['TransactionId'], columns=['hours'])
+# x = range(24)
+# # dd = df.plot()
+# # dd.set_xticks(range(len(df)))
+# # plt.figure(figsize=(40,20))
+# fig = plt.figure()
+# fig.patch.set_facecolor('xkcd:lightblue')
+# plt.grid()
+# plt.plot(x, df, linestyle='solid', color='black')
+# plt.scatter(pd.DataFrame(range(24)), df, s=85, edgecolors='deeppink', c='black')
+# plt.xlabel('Time of the day')
+# plt.ylabel('Total Transactions')
+# plt.title('Charging transactions per hour of the day')
+# plt.xlim(-2, 25)
+# plt.savefig('total-transactions', dpi=600)
+# plt.show()
+
+
+# Charging transactions per hour of the day.
+# Charging transactions per hour of the day.
+
+
+# transaction count per day of the week
+# transaction count per day of the week
+
+
+# total_energy_units_day_night = (df_open_transactions.groupby(['Day/Night'])['TotalEnergy'].sum())
+# total_transactions_units_day_night = (df_open_transactions.groupby(['Day/Night']).count())
+#
+# print(total_energy_units_day_night)
+# print(total_energy_units_day_night)
+# sns.countplot(df_open_transactions['Day of the Week'], edgecolor='k', alpha=.9)
+# sns.set(rc={'axes.facecolor': 'white', 'figure.facecolor': 'skyblue'})
+# plt.xlabel("Day of the Week")
+# plt.ylabel("Transactions")
+# plt.savefig('count_weekday', dpi=600)
+# plt.show()
+
+# transaction count per day of the week
+# transaction count per day of the week
+
+
+
+
 
 # print(df_meter_values.columns.values)
 
@@ -24,32 +82,6 @@ print(df_open_transactions.columns.values)
 # print((df_open_transactions.groupby(['Day/Night'])['MaxPower'].sum()))
 # # first graph
 # print(df_open_transactions.groupby(['Start Integer Hour'])['TransactionId'].count())
-start_time = pd.to_datetime(df_open_transactions['UTCTransactionStart'])
-
-
-def creating_hour_values(transaction_start_time):
-    return int(float(transaction_start_time.strftime("%H")) + float(transaction_start_time.strftime("%M")) / 60)
-
-
-df_open_transactions['Start Integer Hour_P'] = start_time.apply(lambda row: creating_hour_values(row))
-df = pd.DataFrame(df_open_transactions.groupby(['Start Integer Hour_P'])['TransactionId'].count())
-print(df.shape)
-y = pd.DataFrame(df['TransactionId'], columns=['hours'])
-x = range(24)
-# dd = df.plot()
-# dd.set_xticks(range(len(df)))
-# plt.figure(figsize=(40,20))
-fig = plt.figure()
-fig.patch.set_facecolor('xkcd:lightblue')
-plt.grid()
-plt.plot(x, df, linestyle='solid', color='black')
-plt.scatter(pd.DataFrame(range(24)), df, s=85, edgecolors='deeppink', c='black')
-plt.xlabel('Time of the day')
-plt.ylabel('Total Transactions')
-plt.title('Charging transactions per hour of the day')
-plt.xlim(-2, 25)
-plt.savefig('total-transactions', dpi=600)
-plt.show()
 # # first graph
 #
 # chargeTime = df_open_transactions['ChargeTime'] > 0
