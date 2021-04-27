@@ -154,4 +154,6 @@ determine_peak_distribution(time_stop[27], time_start[27])
 df_open_transactions['On-Off-Mid-Distribution'] = \
     df_open_transactions.apply(lambda x: determine_peak_distribution(x['UTCTransactionStop'], x['UTCTransactionStart']),
                                axis=1)
-print(df_open_transactions)
+print(df_open_transactions['ConnectedTime'])
+
+

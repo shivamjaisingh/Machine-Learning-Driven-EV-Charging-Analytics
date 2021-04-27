@@ -222,3 +222,32 @@ df_open_transactions = data_open_trans()
 # print(df_open_transactions['Peaks_Python'])
 #
 # df_open_transactions.to_csv("dataset_new", sep=',', encoding='utf-8')
+
+# df = df_open_transactions.groupby(['Start Integer Hour'])['ConnectedTimeRatio'].mean()
+#
+# y = pd.DataFrame(df, columns=['ctimeRatio'])
+# x = range(24)
+# # dd = df.plot()
+# # dd.set_xticks(range(len(df)))
+# # plt.figure(figsize=(40,20))
+# fig = plt.figure()
+# fig.patch.set_facecolor('xkcd:lightblue')
+# plt.grid()
+# plt.plot(x, df, linestyle='solid', color='black')
+# plt.scatter(pd.DataFrame(range(24)), df, s=85, edgecolors='deeppink', c='black')
+# plt.xlabel('Time of the day')
+# plt.ylabel('Connected Time Ratio')
+# plt.title('Average Connected Time Ratio per hour of the day')
+# plt.xlim(-2, 25)
+# plt.savefig('connected-Time-Ratio-hour', dpi=600)
+# plt.show()
+
+# df_open_transactions['Start Integer Hour_P'] = start_time.apply(lambda row: creating_hour_values(row))
+# df = pd.DataFrame(df_open_transactions.groupby(['Start Integer Hour_P'])['TransactionId'].count())
+# print(df.shape)
+# y = pd.DataFrame(df['TransactionId'], columns=['hours'])
+# x = range(24)
+# # dd = df.plot()
+
+
+print(df_open_transactions['ConnectedTimeRatio'])
