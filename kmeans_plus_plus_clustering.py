@@ -34,7 +34,7 @@ plt.title('Start Time and Total Connected Time')
 plt.xlabel('Start Connection Hour ')
 plt.ylabel('Total Hours Connected')
 plt.show()
-n_clusters = 4  # determine number of clusters
+n_clusters = 3  # determine number of clusters
 kmeans = KMeans(n_clusters=n_clusters, init='k-means++', random_state=300140951).fit(data)
 labels = kmeans.labels_
 print(labels)

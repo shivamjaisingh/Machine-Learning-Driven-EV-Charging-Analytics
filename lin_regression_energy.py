@@ -40,7 +40,7 @@ plt.show()
 # to predict -- total energy
 # input -- start hour
 
-n_components = 4
+n_components = 5
 gmm = GaussianMixture(n_components=n_components, covariance_type='full',
                       random_state=300140951).fit(data[['Start Integer Hour_P', 'ConnectedTime']])
 
