@@ -30,7 +30,7 @@ plt.scatter(data['Start Integer Hour_P'], data['TotalEnergy'], edgecolors='k',
             s=45, alpha=.8, c='royalblue')
 plt.title('Start Time and Total Connected Time')
 plt.xlabel('Start Connection Hour ')
-plt.ylabel('Total Hours Connected')
+plt.ylabel('Total Energy Units')
 plt.savefig('scatter_energy', dpi=600)
 plt.show()
 
