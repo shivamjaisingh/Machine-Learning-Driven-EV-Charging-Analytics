@@ -156,4 +156,3 @@ df_open_transactions['On-Off-Mid-Distribution'] = \
                                axis=1)
 print(df_open_transactions['ConnectedTime'])
 
-

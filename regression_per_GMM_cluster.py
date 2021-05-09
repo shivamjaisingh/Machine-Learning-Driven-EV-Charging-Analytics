@@ -50,31 +50,31 @@ frame['cluster'] = labels
 frame.columns = ['Start Integer Hour_P', 'ConnectedTime', 'cluster', 'TotalEnergy']
 
 print(frame['cluster'].nunique())
-# plotting results
-color = ['lightgreen', 'yellow', 'deeppink', 'orange', 'magenta', 'yellow', 'black', 'orange', 'pink']
-marker_r = ["*", "+", "x", "3", ".", "o", "p", "D", "2"]
-for k in range(0, 4):
-    data = frame[frame["cluster"] == k]
-    print("shape: " + str(data.shape))
-    x = data['Start Integer Hour_P'].to_numpy().reshape(-1, 1)
-    y = data['ConnectedTime'].to_numpy()
-    reg = LinearRegression().fit(x, y)  # only using start connection hour as input ||
-    y_pred = reg.predict(x)
-    print("Prediction with: " + str(k) + str(reg.predict(np.array([[19]]))))
-    print("Score :" + str(reg.score(x, y) * 100))
-    plt.xlim(-1, 26)
-    plt.ylim(-1, 26)
-    plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], c=color[k], edgecolors='k',
-                s=50, alpha=.8)
-    max_x = round(float(max(x)), 2)
-    max_y = round(float(max(y)), 2)
-    min_x = round(float(min(x)), 2)
-    min_y = round(float(min(y)), 2)
-    plt.xlabel(str(min_x) + '<= Start Connection Hour <=' + str(max_x))
-    plt.ylabel(str(min_y) + '<= Total Hours Connected <=' + str(max_y))
-    plt.savefig("cluster-" + str(k + 1), dpi=600)
-    plt.show()
-    plt.close()
+# # plotting results
+# color = ['lightgreen', 'yellow', 'deeppink', 'orange', 'magenta', 'yellow', 'black', 'orange', 'pink']
+# marker_r = ["*", "+", "x", "3", ".", "o", "p", "D", "2"]
+# for k in range(0, 4):
+#     data = frame[frame["cluster"] == k]
+#     print("shape: " + str(data.shape))
+#     x = data['Start Integer Hour_P'].to_numpy().reshape(-1, 1)
+#     y = data['ConnectedTime'].to_numpy()
+#     reg = LinearRegression().fit(x, y)  # only using start connection hour as input ||
+#     y_pred = reg.predict(x)
+#     print("Prediction with: " + str(k) + str(reg.predict(np.array([[19]]))))
+#     print("Score :" + str(reg.score(x, y) * 100))
+#     plt.xlim(-1, 26)
+#     plt.ylim(-1, 26)
+#     plt.scatter(data['Start Integer Hour_P'], data['ConnectedTime'], c=color[k], edgecolors='k',
+#                 s=50, alpha=.8)
+#     max_x = round(float(max(x)), 2)
+#     max_y = round(float(max(y)), 2)
+#     min_x = round(float(min(x)), 2)
+#     min_y = round(float(min(y)), 2)
+#     plt.xlabel(str(min_x) + '<= Start Connection Hour <=' + str(max_x))
+#     plt.ylabel(str(min_y) + '<= Total Hours Connected <=' + str(max_y))
+#     plt.savefig("cluster-" + str(k + 1), dpi=600)
+#     plt.show()
+#     plt.close()
 
 color = ['lightgreen', 'yellow', 'deeppink', 'orange', 'magenta', 'yellow', 'black', 'orange', 'pink']
 marker_r = ["*", "+", "x", "3", ".", "o", "p", "D", "2"]
