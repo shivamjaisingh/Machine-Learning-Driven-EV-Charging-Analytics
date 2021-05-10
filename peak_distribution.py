@@ -1,5 +1,10 @@
 import pandas as pd
 from reading_data import data_open_trans
+from tabulate import tabulate
+from IPython.display import display
+import matplotlib.pyplot as plt
+
+pd.options.display.width = None
 
 df_open_transactions = data_open_trans()
 
@@ -151,8 +156,35 @@ def determine_peak_distribution(transaction_stop_time, transaction_start_time):
 determine_peak_distribution(time_stop[27], time_start[27])
 # date_year['Peaks_Python'] = date_year.apply(lambda row: determine_peak(row))
 
-df_open_transactions['On-Off-Mid-Distribution'] = \
+df_open_transactions['On-Off-Mid-Peak-Distribution'] = \
     df_open_transactions.apply(lambda x: determine_peak_distribution(x['UTCTransactionStop'], x['UTCTransactionStart']),
                                axis=1)
-print(df_open_transactions['ConnectedTime'])
+# print(tabulate(df_open_transactions['On-Off-Mid-Distribution'].head(10), headers='keys', tablefmt='psql',showindex=False))
 
+# with pd.option_context('display.max_rows', None, 'display.max_columns', None):  # more options can be specified also
+#     print(df_open_transactions[['ConnectedTime', 'On-Off-Mid-Distribution']])
+#
+df_1 = df_open_transactions[['ConnectedTime', 'On-Off-Mid-Peak-Distribution']].head(20)
+
+plt.axis('off')
+plt.axis('tight')
+plt.table(cellText=df_1.values, colLabels=df_1.columns,
+          cellLoc='center', colColours=['yellow','pink'],
+          loc='center')
+plt.title("Peak distribution", y=1)
+plt.axis('tight')
+plt.savefig("Peak distribution of connected time", dpi=600)
+plt.show()
+plt.close()
+
+# df_2 = df_open_transactions[['IdleTimeRatio']].head(20)
+# plt.axis('off')
+# plt.axis('tight')
+# plt.table(cellText=df_2.values.round(4), colLabels=df_2.columns,
+#           cellLoc='center', colColours=['yellow'],
+#           loc='center')
+# plt.title("Idle Time Ratio", y=1)
+# plt.axis('tight')
+# plt.savefig("Peak distribution of connected time", dpi=600)
+# plt.show()
+# plt.close()

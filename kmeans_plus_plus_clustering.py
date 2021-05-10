@@ -34,7 +34,7 @@ plt.title('Start Time and Total Connected Time')
 plt.xlabel('Start Connection Hour ')
 plt.ylabel('Total Hours Connected')
 plt.show()
-n_clusters = 3  # determine number of clusters
+n_clusters = 4  # determine number of clusters
 kmeans = KMeans(n_clusters=n_clusters, init='k-means++', random_state=300140951).fit(data)
 labels = kmeans.labels_
 print(labels)
@@ -54,5 +54,5 @@ for k in range(0, 9):
 plt.title('K-Means++ Visualization with ' + str(n_clusters) + ' clusters')
 plt.xlabel('Start Connection Hour ')
 plt.ylabel('Total Hours Connected')
-plt.savefig('kmeans_plus_plus', dpi=600)
+plt.savefig('kmeans_plus_plus with '+str(n_clusters), dpi=600)
 plt.show()

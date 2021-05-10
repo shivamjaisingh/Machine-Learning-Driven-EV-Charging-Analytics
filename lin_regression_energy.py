@@ -6,7 +6,6 @@ import pandas as pd
 from reading_data import data_open_trans
 import matplotlib.patheffects as pe
 
-
 # from sklearn.model_selection import cross_val_score
 
 df_open_transactions = data_open_trans()
@@ -64,12 +63,13 @@ for k in range(0, 4):
     y = data['TotalEnergy'].to_numpy()
     reg = LinearRegression().fit(x, y)  # only using start connection hour as input ||
     y_pred = reg.predict(x)
-    energy_predicted = [round(float(reg.predict(np.array([[hour]]))), 2) for hour in range(24)]
+    energy_predicted = [round(float(reg.predict(np.array([[hour]]))), 2) for hour in range(min(data['Start Integer Hour']), max(data['Start Integer Hour']) + 1)]
     total_energy_used_per_hour = pd.DataFrame(data.groupby(['Start Integer Hour'], as_index=False)['TotalEnergy']
                                               .mean().round(2))
     total_energy_used_per_hour.columns = ['Connection Start Hour', 'Total Energy Demand']
     print(total_energy_used_per_hour)
-    start_hours = range(0, 24)
+    # start_hours = range(0, 24)
+    start_hours = range(min(data['Start Integer Hour']), max(data['Start Integer Hour']) + 1)
     # range_demand = range(min(data['Start Integer Hour']), max(data['Start Integer Hour']) + 1)
 
     energy_per_start_hour = pd.DataFrame(list(zip(start_hours, energy_predicted)),
@@ -111,12 +111,12 @@ for k in range(0, 4):
     plt.plot(x1, y1, label="Predicted Energy", color=color[k], mec='k', marker='o')
     plt.plot(x2, y2, label="Energy Demand", color='k', marker='o')
     plt.xlabel('Start Connection Hour')
-    plt.ylabel('Energy Demand vs Energy Predicted (kWh)')
+    plt.ylabel('Average Energy Demand vs Energy Predicted (kWh)')
 
-    plt.title('Energy Demand vs Energy Predicted for cluster of color  ' + str(color[k]))
+    plt.title('Average Energy Demand vs Energy Predicted for cluster of color  ' + str(color[k]))
 
     plt.legend()
-    plt.savefig('Energy-demand-vs-predicted color '+str(color[k]), dpi=600)
+    plt.savefig('Energy-demand-vs-predicted color ' + str(color[k]), dpi=600)
     plt.show()
 
     # print(hours_per_start_hour.shape)

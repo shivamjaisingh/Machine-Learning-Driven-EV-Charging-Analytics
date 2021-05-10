@@ -29,7 +29,7 @@ plt.xlabel('Start Connection Hour ')
 plt.ylabel('Total Hours Connected')
 plt.show()
 
-n_components = 9
+n_components = 4
 gmm = GaussianMixture(n_components=n_components, covariance_type='full', random_state=300140951).fit(data)
 
 labels = gmm.predict(data)
@@ -39,7 +39,7 @@ frame['cluster'] = labels
 frame.columns = ['Start Integer Hour_P', 'ConnectedTime', 'cluster']
 
 # plotting results
-color = ['lightgreen', 'yellow', 'deeppink', 'orange', 'magenta', 'pink', 'blue', 'grey', 'red']
+color = ['lightgreen', 'yellow', 'deeppink', 'orange', 'blue', 'pink', 'magenta', 'grey', 'red']
 marker_r = ["*", "+", "x", "3", ".", "o", "p", "D", "2"]
 for k in range(0, 9):
     data = frame[frame["cluster"] == k]
@@ -51,6 +51,7 @@ for k in range(0, 9):
 plt.title('GMM Visualization with ' + str(n_components) + ' clusters of charging sessions')
 plt.xlabel('Start Connection Hour ')
 plt.ylabel('Total Hours Connected')
+plt.savefig('Gmm visual with '+str(n_components), dpi=600)
 plt.show()
 
 
