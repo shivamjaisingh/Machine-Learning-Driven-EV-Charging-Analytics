@@ -20,7 +20,7 @@ df_open_transactions['Start Integer Hour_P'] = start_time.apply(lambda row: crea
 
 # print(df_open_transactions['Start Integer Hour_P'])
 df_open_transactions['ConnectedTime'] = pd.to_numeric(df_open_transactions['ConnectedTime'])
-df_open_transactions = df_open_transactions[df_open_transactions['ConnectedTime'] <= 25]
+df_open_transactions = df_open_transactions[df_open_transactions['ConnectedTime'] <= 24]
 data = df_open_transactions[['Start Integer Hour_P', 'ConnectedTime']]
 # y_true = df_open_transactions['ConnectedTime']
 # y_true = y_true.to_numpy()

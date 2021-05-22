@@ -13,7 +13,10 @@ df_open_transactions = data_open_trans()
 ## Charging transactions per hour of the day.
 ## Charging transactions per hour of the day.
 
-
+# df_open_transactions = df_open_transactions[df_open_transactions['ConnectedTime'] <= 24]
+# #df_open_transactions = df_open_transactions[df_open_transactions['Season'] == 'Winter']
+#
+#
 # print(df_open_transactions.columns.values)
 # start_time = pd.to_datetime(df_open_transactions['UTCTransactionStart'])
 #
@@ -37,9 +40,9 @@ df_open_transactions = data_open_trans()
 # plt.scatter(pd.DataFrame(range(24)), df, s=85, edgecolors='deeppink', c='black')
 # plt.xlabel('Time of the day')
 # plt.ylabel('Total Transactions')
-# plt.title('Charging transactions per hour of the day')
+# plt.title('Charging transactions per hour of the day (All Seasons)')
 # plt.xlim(-2, 25)
-# plt.savefig('total-transactions', dpi=600)
+# plt.savefig('total-transactions-all', dpi=600)
 # plt.show()
 
 ## Charging transactions per hour of the day.
@@ -49,7 +52,8 @@ df_open_transactions = data_open_trans()
 ## Total energy per hour of the day.
 ## Total energy per hour of the day.
 
-
+# df_open_transactions = df_open_transactions[df_open_transactions['ConnectedTime'] <= 24]
+# #df_open_transactions = df_open_transactions[df_open_transactions['Season'] == 'Summer']
 # print(df_open_transactions.columns.values)
 # start_time = pd.to_datetime(df_open_transactions['UTCTransactionStart'])
 #
@@ -73,9 +77,9 @@ df_open_transactions = data_open_trans()
 # plt.scatter(pd.DataFrame(range(24)), df, s=85, edgecolors='deeppink', c='black')
 # plt.xlabel('Time of the day')
 # plt.ylabel('Total Energy (kWh)')
-# plt.title('Total Energy per hour of the day')
+# plt.title('Total Energy per hour of the day (All Seasons)')
 # plt.xlim(-2, 25)
-# plt.savefig('total-energy', dpi=300)
+# plt.savefig('total-energy-all', dpi=300)
 # plt.show()
 
 ## Total energy per hour of the day.
@@ -85,7 +89,9 @@ df_open_transactions = data_open_trans()
 ## transaction count per day of the week
 ## transaction count per day of the week
 
-
+# df_open_transactions = df_open_transactions[df_open_transactions['ConnectedTime'] <= 24]
+# #df_open_transactions = df_open_transactions[df_open_transactions['Season'] == 'Summer']
+#
 # total_energy_units_day_night = (df_open_transactions.groupby(['Day/Night'])['TotalEnergy'].sum())
 # total_transactions_units_day_night = (df_open_transactions.groupby(['Day/Night']).count())
 #
@@ -95,7 +101,8 @@ df_open_transactions = data_open_trans()
 # sns.set(rc={'axes.facecolor': 'white', 'figure.facecolor': 'skyblue'})
 # plt.xlabel("Day of the Week")
 # plt.ylabel("Transactions")
-# plt.savefig('count_weekday', dpi=600)
+# plt.title("Transactions per Day of the Week (All Seasons)")
+# plt.savefig('count_weekday_all', dpi=600)
 # plt.show()
 
 # transaction count per day of the week
@@ -253,6 +260,9 @@ df_open_transactions = data_open_trans()
 #
 # df_open_transactions.to_csv("dataset_new", sep=',', encoding='utf-8')
 
+# df_open_transactions = df_open_transactions[df_open_transactions['ConnectedTime'] <= 24]
+# #df_open_transactions = df_open_transactions[df_open_transactions['Season'] == 'Summer']
+#
 # df = df_open_transactions.groupby(['Start Integer Hour'])['IdleTimeRatio'].mean()
 #
 # y = pd.DataFrame(df, columns=['ctimeRatio'])
@@ -267,9 +277,9 @@ df_open_transactions = data_open_trans()
 # plt.scatter(pd.DataFrame(range(24)), df, s=85, edgecolors='deeppink', c='black')
 # plt.xlabel('Time of the day')
 # plt.ylabel('Idle Time Ratio')
-# plt.title('Average Idle Time Ratio per hour of the day')
+# plt.title('Average Idle Time Ratio per hour of the day (All Seasons)')
 # plt.xlim(-2, 25)
-# plt.savefig('Idle-Time-Ratio-hour', dpi=600)
+# plt.savefig('Idle-Time-Ratio-hour-all', dpi=600)
 # plt.show()
 
 # df_open_transactions['Start Integer Hour_P'] = start_time.apply(lambda row: creating_hour_values(row))
