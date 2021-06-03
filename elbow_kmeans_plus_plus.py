@@ -21,7 +21,7 @@ df_open_transactions['Start Integer Hour_P'] = start_time.apply(lambda row: crea
 
 # print(df_open_transactions['Start Integer Hour_P'])
 df_open_transactions['ConnectedTime'] = pd.to_numeric(df_open_transactions['ConnectedTime'])
-df_open_transactions = df_open_transactions[df_open_transactions['ConnectedTime'] <= 80]
+df_open_transactions = df_open_transactions[df_open_transactions['ConnectedTime'] <= 24]
 df = data = df_open_transactions[['Start Integer Hour_P', 'ConnectedTime']]
 distortions = []
 K = range(1, 10)
@@ -36,7 +36,7 @@ fig.patch.set_facecolor('xkcd:salmon')
 plt.plot(K, distortions, 'ko-')
 plt.xlabel('k')
 plt.ylabel('Distortion')
-plt.title('The Elbow Method showing the optimal k')
-plt.savefig('elbow_means', dpi=600)
+plt.title('The Elbow Method showing the optimal k (K-Means)')
+plt.savefig('elbow_means_24_kmeans_pp', dpi=600)
 plt.show()
 

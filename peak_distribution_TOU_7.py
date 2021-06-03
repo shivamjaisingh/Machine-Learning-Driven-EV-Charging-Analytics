@@ -20,6 +20,7 @@ def determine_peak_distribution(transaction_stop_time, transaction_start_time):
         super_off_hours = float(0)
         total_hours_left = (transaction_stop_time - transaction_start_time)
         total_hours_left = total_hours_left.total_seconds() / 3600
+        t_hours = total_hours_left
         # if transaction_start_time.strftime("%A") and transaction_stop_time.strftime("%A") in ["Saturday",
         # "Sunday"]: off_hours = total_hours_left mid_hours = 0 on_hours = 0 print("Total Hours:",
         # total_hours_left, "Off Hours:", off_hours, "Mid Hours:", mid_hours, "On Hours:", on_hours) return
@@ -70,8 +71,8 @@ def determine_peak_distribution(transaction_stop_time, transaction_start_time):
                 #      time_charged,
                 #      "Start Hour: ", start_hour)
 
-        return str(round(on_hours, 3)) + ", " + str(round(off_hours, 3)) + ", " + str(round(mid_hours, 3)) + ", " + str(
-            round(super_off_hours, 3))
+        return str(round((on_hours/t_hours)*100, 3)) + "%, " + str(round((off_hours/t_hours)*100, 3)) + "%, " + str(round((mid_hours/t_hours)*100, 3)) + "%, " + str(
+            round((super_off_hours/t_hours)*100, 3))+"%"
 
     else:
         if (transaction_start_time.strftime("%A") in ["Saturday", "Sunday"]) and (
@@ -84,6 +85,7 @@ def determine_peak_distribution(transaction_stop_time, transaction_start_time):
 
             total_hours_left = (transaction_stop_time - transaction_start_time)
             total_hours_left = total_hours_left.total_seconds() / 3600
+            t_hours = total_hours_left
             # if transaction_start_time.strftime("%A") and transaction_stop_time.strftime("%A") in ["Saturday",
             # "Sunday"]: off_hours = total_hours_left mid_hours = 0 on_hours = 0 print("Total Hours:",
             # total_hours_left, "Off Hours:", off_hours, "Mid Hours:", mid_hours, "On Hours:", on_hours) return
@@ -129,8 +131,8 @@ def determine_peak_distribution(transaction_stop_time, transaction_start_time):
                     # print("Total Hours Left:", total_hours_left, "Off Hours:", off_hours, "Time Charged:",
                     # time_charged, "Start Hour:", start_hour)
 
-            return str(round(on_hours, 3)) + ", " + str(round(off_hours, 3)) + ", " + str(
-                round(mid_hours, 3)) + ", " + str(round(super_off_hours, 3))
+            return str(round((on_hours/t_hours)*100, 3)) + "%, " + str(round((off_hours/t_hours)*100, 3)) + "%, " + str(
+                round((mid_hours/t_hours)*100, 3)) + "%, " + str(round((super_off_hours/t_hours)*100, 3))+"%"
         else:
             on_hours = float(0)
             mid_hours = float(0)
@@ -139,6 +141,7 @@ def determine_peak_distribution(transaction_stop_time, transaction_start_time):
 
             total_hours_left = (transaction_stop_time - transaction_start_time)
             total_hours_left = total_hours_left.total_seconds() / 3600
+            t_hours = total_hours_left
             # if transaction_start_time.strftime("%A") and transaction_stop_time.strftime("%A") in ["Saturday",
             # "Sunday"]: off_hours = total_hours_left mid_hours = 0 on_hours = 0 print("Total Hours:",
             # total_hours_left, "Off Hours:", off_hours, "Mid Hours:", mid_hours, "On Hours:", on_hours) return
@@ -184,8 +187,8 @@ def determine_peak_distribution(transaction_stop_time, transaction_start_time):
                     # print("Total Hours Left:", total_hours_left, "Off Hours:", off_hours, "Time Charged:",
                     # time_charged, "Start Hour:", start_hour)
 
-            return str(round(on_hours, 3)) + ", " + str(round(off_hours, 3)) + ", " + str(
-                round(mid_hours, 3)) + ", " + str(round(super_off_hours, 3))
+            return str(round((on_hours/t_hours)*100, 3)) + "%, " + str(round((off_hours/t_hours)*100, 3)) + "%, " + str(
+                round((mid_hours/t_hours)*100, 3)) + "%, " + str(round((super_off_hours/t_hours)*100, 3))+"%"
 
 
 print(determine_peak_distribution(time_stop[25], time_start[25]))
