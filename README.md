@@ -65,35 +65,6 @@ This scatter plot illustrates the relationship between the start connection hour
 
 This image is a histogram showing the distribution of EV charging transactions across different hours of the day, divided into day and night periods. The x-axis represents the starting hour of the transaction, while the y-axis shows the number of transactions. The chart indicates a high frequency of transactions starting in the early morning hours, with a significant decline as the day progresses.
 
-![total-transactions-summer](https://github.com/shivamjaisingh/ML-Driven-EV-Charge-Analytics/assets/20377780/3b7cab69-cb32-4e26-9b53-7a7996b4c7af)
-
-This line graph depicts the number of EV charging transactions per hour during the winter season. The x-axis represents the time of the day, while the y-axis indicates the total number of transactions. The graph shows peak activity in the early morning hours, with a secondary peak around mid-morning, followed by a gradual decline throughout the day.
-
-![total-transactions-all](https://github.com/shivamjaisingh/ML-Driven-EV-Charge-Analytics/assets/20377780/0f3ce12a-aacf-4eb1-8960-ad15561d9cac)
-
-This line graph represents the number of EV charging transactions per hour across all seasons. The x-axis shows the time of the day, while the y-axis indicates the total number of transactions. The graph reveals a significant peak in the early morning hours around 5 AM, followed by a secondary peak around 9 AM, and then a gradual decline in transactions throughout the rest of the day.
-
-![total-transactions](https://github.com/shivamjaisingh/ML-Driven-EV-Charge-Analytics/assets/20377780/365f7bbb-3159-4d0d-93ba-db1f3be8af6b)
-
-This line graph illustrates the number of EV charging transactions per hour throughout the day, without distinguishing between different seasons. The x-axis represents the time of the day, and the y-axis shows the total number of transactions. The graph reveals that the highest number of transactions occurs early in the morning around 5 AM, followed by a steady activity level until mid-afternoon, and then a noticeable decline towards the evening.
-
-![total-energy-winter](https://github.com/shivamjaisingh/ML-Driven-EV-Charge-Analytics/assets/20377780/96aaa530-6f4a-4de3-bd22-7d0b8d60f0eb)
-
-This line graph shows the total energy consumption per hour of the day during the winter season. The x-axis represents the time of the day, while the y-axis indicates the total energy consumed in kilowatt-hours (kWh). The graph reveals a peak in energy consumption around 5 AM, followed by a secondary peak around 9 AM, and then a decline throughout the day, with another minor peak in the afternoon before tapering off in the evening.
-
-![total-energy-summer](https://github.com/shivamjaisingh/ML-Driven-EV-Charge-Analytics/assets/20377780/065fa240-2229-4b0d-834b-49899c0217f2)
-
-This line graph depicts the total energy consumption per hour of the day across all seasons. The x-axis represents the time of the day, while the y-axis shows the total energy consumed in kilowatt-hours (kWh). The graph reveals a significant peak in energy consumption around 5 AM, followed by a secondary peak around 9 AM, and then a gradual decline throughout the day, with another minor peak in the afternoon before decreasing again in the evening.
-             
-
-![total-energy-all](https://github.com/shivamjaisingh/ML-Driven-EV-Charge-Analytics/assets/20377780/ea6d2129-0c88-4895-b260-4cb1a3dc558f)
-
-This line graph illustrates the total energy consumption per hour of the day, aggregated across all seasons. The x-axis represents the time of the day, while the y-axis indicates the total energy consumed in kilowatt-hours (kWh). The graph shows a major peak in energy consumption around 5 AM, followed by a secondary peak around 9 AM, a steady level of consumption until the afternoon, and a decline in the evening hours, indicating consistent daily usage patterns.
-
-![total-energy](https://github.com/shivamjaisingh/ML-Driven-EV-Charge-Analytics/assets/20377780/10af6680-5dd5-42f7-8d8c-03a5e4bd2250)
-
-This line graph depicts the total energy consumption per hour throughout the day, without specifying any particular season. The x-axis represents the time of the day, while the y-axis shows the total energy consumed in kilowatt-hours (kWh). The graph indicates a significant peak in energy consumption around 5 AM, followed by a secondary peak around 9 AM, a relatively steady consumption level until mid-afternoon, and a decline in the evening hours, reflecting the daily charging patterns of EV users.
-
 ![table-for-orange](https://github.com/shivamjaisingh/ML-Driven-EV-Charge-Analytics/assets/20377780/77a30e88-1508-43bb-8ac4-fc828a4a9cad)
 
 This table displays the predicted total energy consumption (in kilowatt-hours) for EV charging sessions that start at various hours of the day for a cluster labeled "orange." The "Connection Start Hour" column lists the hours from midnight (0.0) to noon (12.0), while the "Total Energy predicted" column shows the corresponding predicted energy consumption. The data indicates a slight decrease in predicted energy consumption as the start hour moves from midnight through the late morning, with the highest energy consumption predicted at midnight and the lowest at noon.
