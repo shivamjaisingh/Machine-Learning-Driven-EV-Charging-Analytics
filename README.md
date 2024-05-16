@@ -1,7 +1,7 @@
 # Data-Analysis-EV-Charging-Dataset
 Data Analysis of EV charging Dataset by [Elaad NL](https://elaad.nl/en/)
 
-##Python Scripts:
+## Python Scripts:
 
 `RandomForest_ChargeTime_Summer.py`: This script utilizes the Random Forest regression model to predict the charging time of EVs during the summer months based on historical data.
 
@@ -41,9 +41,9 @@ Data Analysis of EV charging Dataset by [Elaad NL](https://elaad.nl/en/)
 
 `peak_distribution.py`: Analyzes the distribution of peak charging times across different periods.
 
-`peak_distribution_TOU_7.py``: Specifically examines peak charging times under Time-of-Use (TOU) tariffs, potentially optimizing cost strategies.
+`peak_distribution_TOU_7.py`: Specifically examines peak charging times under Time-of-Use (TOU) tariffs, potentially optimizing cost strategies.
 
-`reading_data.py``: A utility script for reading and preprocessing data from provided datasets.
+`reading_data.py`: A utility script for reading and preprocessing data from provided datasets.
 
-`regression_per_GMM_cluster.py``: Conducts regression analysis within each cluster defined by a prior GMM clustering process.
+`regression_per_GMM_cluster.py`: Conducts regression analysis within each cluster defined by a prior GMM clustering process.
 
