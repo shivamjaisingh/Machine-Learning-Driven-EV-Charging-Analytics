@@ -1,6 +1,6 @@
 # ML Driven Analytics of EV charging Dataset by [Elaad NL](https://elaad.nl/en/)
 
-## Python Scripts Description:
+## Python Scripts Description
 
 `RandomForest_ChargeTime_Summer.py`: This script utilizes the Random Forest regression model to predict the charging time of EVs during the summer months based on historical data.
 
@@ -46,7 +46,7 @@
 
 `regression_per_GMM_cluster.py`: Conducts regression analysis within each cluster defined by a prior GMM clustering process.
 
-## Few of the output visuals:
+## Few of the output visuals
 
 ![Idle-Time-Ratio-hour-all](https://github.com/shivamjaisingh/ML-Driven-EV-Charge-Analytics/assets/20377780/308e6168-7d7f-4067-a148-08870e72680d)
 
