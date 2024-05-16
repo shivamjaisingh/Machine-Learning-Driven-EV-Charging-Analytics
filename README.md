@@ -1,7 +1,7 @@
 # Data-Analysis-EV-Charging-Dataset
 Data Analysis of EV charging Dataset by [Elaad NL](https://elaad.nl/en/)
 
-## Python Scripts:
+## Python Scripts Description:
 
 `RandomForest_ChargeTime_Summer.py`: This script utilizes the Random Forest regression model to predict the charging time of EVs during the summer months based on historical data.
 
