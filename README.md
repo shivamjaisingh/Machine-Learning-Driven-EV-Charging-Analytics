@@ -47,7 +47,19 @@ ML Driven Analytics of EV charging Dataset by [Elaad NL](https://elaad.nl/en/)
 
 `regression_per_GMM_cluster.py`: Conducts regression analysis within each cluster defined by a prior GMM clustering process.
 
-## Output Visual:
+## Few of the output visuals:
+
+![Idle-Time-Ratio-hour-all](https://github.com/shivamjaisingh/ML-Driven-EV-Charge-Analytics/assets/20377780/308e6168-7d7f-4067-a148-08870e72680d)
+
+This line graph shows the average idle time ratio per hour of the day across all seasons. The x-axis represents the time of the day, while the y-axis indicates the idle time ratio, which is the proportion of time EV chargers are plugged in but not actively charging. The graph reveals two prominent peaks around midnight and 8 PM, indicating higher idle times during these periods, and a notable dip around noon, suggesting more active charging during midday hours.
+
+![kmeans_plus_plus with 5](https://github.com/shivamjaisingh/ML-Driven-EV-Charge-Analytics/assets/20377780/42c75177-64ea-41c7-b42f-d4f135bfd192)
+
+This scatter plot shows the results of applying the K-Means++ clustering algorithm with five clusters to the EV charging dataset. The x-axis represents the start connection hour, and the y-axis indicates the total hours connected. The data points are color-coded into five clusters: yellow, pink, green, orange, and purple, each representing distinct patterns of EV charging behavior based on the time of connection and the duration of connection, highlighting more granular groupings compared to the three-cluster solution.
+
+![scatter_energy](https://github.com/shivamjaisingh/ML-Driven-EV-Charge-Analytics/assets/20377780/93db248b-6710-4649-8cf8-685e43921709)
+
+This scatter plot illustrates the relationship between the start connection hour and the total energy units consumed for EV charging sessions. The x-axis represents the start connection hour, ranging from 0 to 24 hours, while the y-axis shows the total energy units consumed. The plot indicates a wide distribution of energy consumption across different start times, with no clear trend or correlation between the start hour and the total energy units consumed, suggesting that energy consumption is fairly consistent regardless of the start time.
 
 ![trans_day_night](https://github.com/shivamjaisingh/ML-Driven-EV-Charge-Analytics/assets/20377780/6810210c-c471-4736-bc22-c0d3614d9f8f)
 
@@ -106,17 +118,7 @@ This bar chart depicts the number of EV charging transactions per day of the wee
 
 This plot shows the Akaike Information Criterion (AIC) and Bayesian Information Criterion (BIC) curves for evaluating the Gaussian Mixture Model (GMM) with different numbers of components (clusters). The x-axis represents the number of components, while the y-axis shows the AIC and BIC values. Both curves initially decline sharply, indicating improved model fit with increasing components, and then level off, suggesting the optimal number of clusters is around 10 to 15, where both AIC and BIC values reach their minimum or stabilize.
 
-![Idle-Time-Ratio-hour-all](https://github.com/shivamjaisingh/ML-Driven-EV-Charge-Analytics/assets/20377780/308e6168-7d7f-4067-a148-08870e72680d)
 
-This line graph shows the average idle time ratio per hour of the day across all seasons. The x-axis represents the time of the day, while the y-axis indicates the idle time ratio, which is the proportion of time EV chargers are plugged in but not actively charging. The graph reveals two prominent peaks around midnight and 8 PM, indicating higher idle times during these periods, and a notable dip around noon, suggesting more active charging during midday hours.
-
-![kmeans_plus_plus with 5](https://github.com/shivamjaisingh/ML-Driven-EV-Charge-Analytics/assets/20377780/42c75177-64ea-41c7-b42f-d4f135bfd192)
-
-This scatter plot shows the results of applying the K-Means++ clustering algorithm with five clusters to the EV charging dataset. The x-axis represents the start connection hour, and the y-axis indicates the total hours connected. The data points are color-coded into five clusters: yellow, pink, green, orange, and purple, each representing distinct patterns of EV charging behavior based on the time of connection and the duration of connection, highlighting more granular groupings compared to the three-cluster solution.
-
-![scatter_energy](https://github.com/shivamjaisingh/ML-Driven-EV-Charge-Analytics/assets/20377780/93db248b-6710-4649-8cf8-685e43921709)
-
-This scatter plot illustrates the relationship between the start connection hour and the total energy units consumed for EV charging sessions. The x-axis represents the start connection hour, ranging from 0 to 24 hours, while the y-axis shows the total energy units consumed. The plot indicates a wide distribution of energy consumption across different start times, with no clear trend or correlation between the start hour and the total energy units consumed, suggesting that energy consumption is fairly consistent regardless of the start time.
 
 
 
