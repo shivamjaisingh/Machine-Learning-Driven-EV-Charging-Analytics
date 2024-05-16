@@ -94,17 +94,9 @@ This line graph illustrates the total energy consumption per hour of the day, ag
 
 This line graph depicts the total energy consumption per hour throughout the day, without specifying any particular season. The x-axis represents the time of the day, while the y-axis shows the total energy consumed in kilowatt-hours (kWh). The graph indicates a significant peak in energy consumption around 5 AM, followed by a secondary peak around 9 AM, a relatively steady consumption level until mid-afternoon, and a decline in the evening hours, reflecting the daily charging patterns of EV users.
 
-![table-for-yellow](https://github.com/shivamjaisingh/ML-Driven-EV-Charge-Analytics/assets/20377780/c28c8d34-f1af-41fe-a54f-1e98697b3614)
-
-This table presents the predicted total energy consumption (in kilowatt-hours) for EV charging sessions starting at different hours of the day, specifically for a cluster labeled "yellow." The "Connection Start Hour" column lists the hours from 1 AM to 5 PM, while the "Total Energy predicted" column shows the corresponding predicted energy consumption. The predictions indicate a decreasing trend in total energy consumption as the start hour progresses from early morning to late afternoon.
-
 ![table-for-orange](https://github.com/shivamjaisingh/ML-Driven-EV-Charge-Analytics/assets/20377780/77a30e88-1508-43bb-8ac4-fc828a4a9cad)
 
 This table displays the predicted total energy consumption (in kilowatt-hours) for EV charging sessions that start at various hours of the day for a cluster labeled "orange." The "Connection Start Hour" column lists the hours from midnight (0.0) to noon (12.0), while the "Total Energy predicted" column shows the corresponding predicted energy consumption. The data indicates a slight decrease in predicted energy consumption as the start hour moves from midnight through the late morning, with the highest energy consumption predicted at midnight and the lowest at noon.
-
-![table-for-lightgreen](https://github.com/shivamjaisingh/ML-Driven-EV-Charge-Analytics/assets/20377780/cb4792fc-f58b-46f3-9427-26aa54c20ac7)
-
-This table provides the predicted total energy consumption (in kilowatt-hours) for EV charging sessions starting at different hours of the day for a cluster labeled "light green." The "Connection Start Hour" column lists the hours from 1 PM (13.0) to 11 PM (23.0), while the "Total Energy predicted" column displays the corresponding predicted energy consumption. The data shows an increasing trend in energy consumption predictions as the start hour progresses from early afternoon to late night, with the highest predicted energy consumption occurring at 11 PM.
 
 ![Energy-demand-vs-predicted color deeppink](https://github.com/shivamjaisingh/ML-Driven-EV-Charge-Analytics/assets/20377780/b4f67cab-c53d-4276-b5e8-1b237393615a)
 
